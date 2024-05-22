@@ -1,5 +1,7 @@
 import pygame
 
+from constants import FLYING, FLAP_COLLDOWN
+
 
 class Bird(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -7,7 +9,7 @@ class Bird(pygame.sprite.Sprite):
         self.images = []
         self.index = 0
         self.counter = 0
-        for num in [1, 2, 3, 2]:
+        for num in FLYING:
             img = pygame.image.load(f'img/bird{num}.png')
             self.images.append(img)
         self.image = self.images[self.index]
@@ -33,8 +35,7 @@ class Bird(pygame.sprite.Sprite):
                 self.clicked = False
             # handle the animation
             self.counter += 1
-            flapp_cooldown = 5
-            if self.counter > flapp_cooldown:
+            if self.counter > FLAP_COLLDOWN:
                 self.counter = 0
                 self.index += 1
                 if self.index >= len(self.images):
