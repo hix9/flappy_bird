@@ -7,7 +7,7 @@ class Bird(pygame.sprite.Sprite):
         self.images = []
         self.index = 0
         self.counter = 0
-        for num in range(1, 4):
+        for num in [1, 2, 3, 2]:
             img = pygame.image.load(f'img/bird{num}.png')
             self.images.append(img)
         self.image = self.images[self.index]
